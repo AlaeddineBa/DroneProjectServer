@@ -5,10 +5,7 @@ var Schema = mongoose.Schema;
 // create a schema
 var positionDroneSchema = new Schema({
 
-    position: {
-        latitude: [Number, Number],
-        longitude: [Number, Number]
-    },
+    position: [Number, Number],
     dated: Date
 });
 

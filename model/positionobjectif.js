@@ -5,10 +5,7 @@ var Schema = mongoose.Schema;
 // create a schema
 var positionObjectifSchema = new Schema({
 
-    position: {
-        latitude:[Number, Number],
-        longitude:[Number, Number]
-    },
+    position: [Number, Number],
     etat: String,
     dated: Date
 });
