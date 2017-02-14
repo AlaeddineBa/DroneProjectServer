@@ -3,20 +3,22 @@ var router = express.Router();
 
 var PositionDrone = require('../model/positiondrone');
 
-/* GET users listing. */
-router.get('/', function(req, res, next) {
+//Recevoir Latitude et Longitude dans le body de la requeque POST
+router.post('/', function(req, res, next) {
+
+    console.log(req.body);
+
+    var positionLatitudeLongitude = req.body;
+
     var position = new PositionDrone({
-        position: [
-            5,
-            10
-        ],
+        position: positionLatitudeLongitude,
         dated: new Date()});
     position.save(function(err) {
         if (err) throw err;
 
         console.log('Position saved successfully!');
     });
-    res.send('respond with a resource');
+    res.send('Position saved successfully');
 });
 
 module.exports = router;
