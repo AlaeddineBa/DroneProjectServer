@@ -16,9 +16,9 @@ router.post('/', function(req, res, next) {
     position.save(function(err) {
         if (err) throw err;
 
-        console.log('Position saved successfully!');
+        console.log('Position saved successfully! ');
     });
-    res.send('Position saved successfully');
+    res.send('Position saved successfully ');
 });
 
 module.exports = router;
