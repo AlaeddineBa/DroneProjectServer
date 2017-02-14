@@ -9,6 +9,7 @@ var positionObjectifSchema = new Schema({
         latitude:[Number, Number],
         longitude:[Number, Number]
     },
+    etat: String,
     dated: Date
 });
 
