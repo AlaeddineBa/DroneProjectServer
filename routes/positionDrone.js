@@ -18,7 +18,29 @@ router.post('/', function(req, res, next) {
 
         console.log('Position saved successfully! ');
     });
+
     res.send('Position saved successfully ');
 });
+
+router.get('/', function(req, res, next) {
+
+
+    PositionDrone.find({  },[],{
+
+        sort:{
+            dated: -1 //Sort by Date Added DESC
+        },
+        limit:1
+    }, function(err, position) {
+        if (err) throw err;
+
+        // object of the user
+        console.log(position);
+        res.send(position);
+    });
+
+
+});
+
 
 module.exports = router;
