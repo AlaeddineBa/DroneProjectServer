@@ -35,8 +35,8 @@ router.get('/', function(req, res, next) {
         if (err) throw err;
 
         // object of the user
-        console.log(position);
-        res.send(position);
+        console.log(position[0]);
+        res.send(position[0]);
     });
 
 
