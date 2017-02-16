@@ -11,7 +11,7 @@ var positionDroneSchema = new Schema({
 
 // the schema is useless so far
 // we need to create a model using it
-var PositionDrone = mongoose.model('positionDrone', positionDroneSchema);
+var PositionDrone = mongoose.model('positiondrone', positionDroneSchema, 'positiondrone');
 
 // make this available to our users in our Node applications
 module.exports = PositionDrone;
