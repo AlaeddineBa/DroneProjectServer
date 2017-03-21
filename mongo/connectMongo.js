@@ -1,3 +1,4 @@
+/*
 // Inclusion de Mongoose
 var mongoose = require('mongoose');
 
@@ -8,6 +9,10 @@ mongoose.connect('mongodb://148.60.11.238:27018/db', function(err) {
     else
         console.log("RUNN");
 });
+
+
+
+*/
 
 
 
