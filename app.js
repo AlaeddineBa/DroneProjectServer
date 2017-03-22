@@ -4,7 +4,6 @@ var bodyParser = require('body-parser');
 
 require('./mongo/connectMongo');
 var position = require('./routes/positionDrone');
-var positions = require('./routes/positionsFindAll');
 var users = require('./routes/users');
 
 var app = express();
@@ -15,7 +14,6 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 
 app.use('/position', position);
-app.use('/positions', positions);
 app.use('/users', users);
 
 // catch 404 and forward to error handler
