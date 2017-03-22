@@ -7,6 +7,8 @@ var position = require('./routes/positionDrone');
 var users = require('./routes/users');
 var test = require('./routes/test');
 var interventions = require('./routes/interventions');
+var points = require('./routes/points');
+var vehicules = require('./routes/vehicules');
 
 var app = express();
 
@@ -19,6 +21,8 @@ app.use('/position', position);
 app.use('/users', users);
 app.use('/test', test);
 app.use('/interventions', interventions);
+app.use('/points', points);
+app.use('/vehicules', vehicules);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
