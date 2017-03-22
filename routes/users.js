@@ -6,8 +6,9 @@ var users = db.collection('users');
 
 router.post('/', function(req, res, next) {
 
-    users.findOne({login: req.body.login, mdp: req.body.mdp},function (err, docs) {
+    users.findOne({login: req.body.login, password: req.body.password},function (err, docs) {
         if(err)throw new Error(err);
+        console.log(docs);
         if(!docs) {
             res.status(404)        // HTTP status 404: NotFound
                 .send('Not found');
