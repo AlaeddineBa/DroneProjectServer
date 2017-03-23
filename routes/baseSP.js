@@ -2,10 +2,10 @@ var express = require('express');
 var router = express.Router();
 
 var db = require('./../mongo/connectMongo');
-var vehicules = db.collection('vehicules');
+var baseSP = db.collection('baseSP');
 
 router.post('/', function(req, res, next) {
-    vehicules.save(req.body, function (err, docs) {
+    baseSP.save(req.body, function (err, docs) {
         if(err)throw new Error(err);
         res.status(200)
             .send('OK');
@@ -13,7 +13,7 @@ router.post('/', function(req, res, next) {
 });
 
 router.get('/', function(req, res, next) {
-    vehicules.find(function (err, docs) {
+    baseSP.find(function (err, docs) {
         if(err)throw new Error(err);
         res.send(docs);
     });
