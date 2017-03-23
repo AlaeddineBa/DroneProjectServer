@@ -8,7 +8,7 @@ var users = require('./routes/users');
 var test = require('./routes/test');
 var interventions = require('./routes/interventions');
 var points = require('./routes/points');
-var vehicules = require('./routes/vehicules');
+var baseSP = require('./routes/baseSP');
 
 var app = express();
 
@@ -22,7 +22,7 @@ app.use('/users', users);
 app.use('/test', test);
 app.use('/interventions', interventions);
 app.use('/points', points);
-app.use('/vehicules', vehicules);
+app.use('/baseSP', baseSP);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -15,6 +15,7 @@ router.post('/', function(req, res, next) {
 });
 
 router.get('/', function(req, res, next) {
+    console.log('SERVEUR');
     interventions.find(function (err, docs) {
         if(err)throw new Error(err);
         res.send(docs);
