@@ -1,6 +1,7 @@
-/**
+/*
+/!**
  * Created by steve on 24/03/17.
- */
+ *!/
 
 var server = require('./../bin/www');
 
@@ -13,8 +14,11 @@ io.sockets.on('connection', function (socket) {
 
     socket.on('message', function (message) {
         console.log('Un client me parle ! Il me dit : ' + message);
-        socket.emit('interventions', message);
+        socket.broadcast.emit('interventions', message);
     });
+
+    socket.emit('message', "TEST ANDROID");
 
 
 });
+*/
