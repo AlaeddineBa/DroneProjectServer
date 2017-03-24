@@ -2,13 +2,17 @@ var express = require('express');
 var path = require('path');
 var bodyParser = require('body-parser');
 
+require('./sync/socket');
 require('./mongo/connectMongo');
+
 var position = require('./routes/positionDrone');
 var users = require('./routes/users');
 var test = require('./routes/test');
 var interventions = require('./routes/interventions');
 var points = require('./routes/points');
 var baseSP = require('./routes/baseSP');
+
+
 
 var app = express();
 

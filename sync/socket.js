@@ -2,21 +2,19 @@
  * Created by steve on 24/03/17.
  */
 
-var syncService = require('app');
-var http = require('http').Server(syncService);
-http.listen(3000, function(){
-    console.log('Synchronization Service Listining on *:3000');
-});
-
-var io = require('socket.io')(http);
-
-io.on('connection', function(socket){
+var server = require('./../bin/www');
 
 
-});
-io.on('connection', function(socket){
-    console.log('a user connected');
-    socket.on('chat message', function(msg){
-        io.emit('chat message', msg);
+var io = require('socket.io').listen(server);
+var test;
+// Quand un client se connecte, on le note dans la console
+io.sockets.on('connection', function (socket) {
+    console.log('CONNECTED');
+
+    socket.on('message', function (message) {
+        console.log('Un client me parle ! Il me dit : ' + message);
+        socket.emit('interventions', message);
     });
+
+
 });

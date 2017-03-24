@@ -6,9 +6,16 @@ var interventions = db.collection('interventions');
 
 var ObjectId = require('mongojs').ObjectId;
 
+var socket = require('socket.io-client')('http://localhost:8080');
+socket.on('connect', function(){});
+socket.on('event', function(data){});
+socket.on('disconnect', function(){});
+
+
 router.post('/', function(req, res, next) {
-    interventions.save(req.body, function (err, docs) {
+    interventions.save(req.body, function (err, intervention) {
         if(err)throw new Error(err);
+        socket.emit('message', intervention._id);
         res.status(200)
             .send('OK');
     });
@@ -20,6 +27,7 @@ router.get('/', function(req, res, next) {
         res.send(docs);
     });
 });
+
 
 router.get('/:id', function(req, res, next) {
     var id = req.params.id;
