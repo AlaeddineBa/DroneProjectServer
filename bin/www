@@ -7,8 +7,8 @@
 var app = require('../app');
 var debug = require('debug')('node:server');
 var http = require('http');
-var httpServer = http.Server(app);
-var io = require('socket.io')(httpServer);
+//var httpServer = http.Server(app);
+//var io = require('socket.io')(httpServer);
 
 /**
  * Get port from environment and store in Express.
@@ -27,7 +27,13 @@ var io = require('socket.io').listen(server);
 
 // Quand un client se connecte, on le note dans la console
 io.sockets.on('connection', function (socket) {
-  console.log('Un client est connecté !');
+  console.log('CONNECTED');
+  socket.emit('message', 'Vous êtes bien connecté !');
+
+  // Quand le serveur reçoit un signal de type "message" du client
+  socket.on('message', function (message) {
+    console.log('Un client me parle ! Il me dit : ' + message);
+  });
 });
 
 
@@ -35,7 +41,7 @@ io.sockets.on('connection', function (socket) {
  * Listen on provided port, on all network interfaces.
  */
 
-server.listen(port,'0.0.0.0');
+server.listen(port);
 server.on('error', onError);
 server.on('listening', onListening);
 
