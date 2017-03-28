@@ -26,7 +26,7 @@ app.use('/users', users);
 app.use('/test', test);
 app.use('/interventions', interventions);
 app.use('/points', points);
-app.use('/baseSP', baseSP);
+app.use('/basesp', baseSP);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
