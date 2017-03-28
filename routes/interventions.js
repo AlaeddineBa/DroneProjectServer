@@ -5,6 +5,7 @@ var db = require('./../mongo/connectMongo');
 var interventions = db.collection('interventions');
 
 var ObjectId = require('mongojs').ObjectId;
+var ObjectIdG = require('mongodb').ObjectID;
 
 var socket = require('socket.io-client')('http://localhost:8080');
 socket.on('connect', function(){});
@@ -14,6 +15,12 @@ socket.on('disconnect', function(){});
 
 router.post('/', function(req, res, next) {
     if(!req.body._id){
+        var objectId;
+        req.body.vehicules.forEach(function (vehicule) {
+            objectId = new ObjectIdG();
+            vehicule._id = objectId;
+        });
+        console.log("TEST1");
         interventions.save(req.body, function (err, intervention) {
             if(err)throw new Error(err);
             socket.emit('message', intervention._id);
