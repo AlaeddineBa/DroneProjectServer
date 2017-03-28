@@ -21,6 +21,7 @@ router.post('/', function(req, res, next) {
                 .send('SAVE');
         });
     }else{
+        console.log(req.body);
         var id = req.body._id;
         req.body._id = id;
         interventions.update({_id: req.body._id},req.body, function (err, intervention) {
