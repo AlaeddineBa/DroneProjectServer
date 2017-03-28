@@ -13,12 +13,24 @@ socket.on('disconnect', function(){});
 
 
 router.post('/', function(req, res, next) {
-    interventions.save(req.body, function (err, intervention) {
-        if(err)throw new Error(err);
-        socket.emit('message', intervention._id);
-        res.status(200)
-            .send('OK');
-    });
+    if(!req.body._id){
+        interventions.save(req.body, function (err, intervention) {
+            if(err)throw new Error(err);
+            socket.emit('message', intervention._id);
+            res.status(200)
+                .send('SAVE');
+        });
+    }else{
+        var id = req.body._id;
+        req.body._id = id;
+        interventions.update({_id: req.body._id},req.body, function (err, intervention) {
+            if(err)throw new Error(err);
+            socket.emit('message', id);
+            res.status(200)
+                .send('UPDATE');
+        });
+    }
+
 });
 
 router.get('/', function(req, res, next) {
