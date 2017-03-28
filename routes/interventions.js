@@ -23,7 +23,7 @@ router.post('/', function(req, res, next) {
     }else{
         console.log(req.body);
         var id = req.body._id;
-        req.body._id = id;
+        req.body._id = ObjectId(id);
         interventions.update({_id: req.body._id},req.body, function (err, intervention) {
             if(err)throw new Error(err);
             socket.emit('message', id);
