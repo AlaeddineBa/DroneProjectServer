@@ -64,5 +64,14 @@ router.get('/:id', function(req, res, next) {
     });
 });
 
+router.post('/:id/cloturer', function(req, res, next) {
+    var id = req.params.id;
+    interventions.update({_id: ObjectId(id)},{$set: {cloturer:true}}, function (err, intervention) {
+        if(err)throw new Error(err);
+        res.status(200)
+            .send('UPDATE');
+    });
+});
+
 
 module.exports = router;
