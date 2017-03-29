@@ -65,7 +65,9 @@ router.get('/:id', function(req, res, next) {
 });
 
 router.post('/:id/cloturer', function(req, res, next) {
+    console.log("CLOTURER");
     var id = req.params.id;
+    console.log(id);
     interventions.update({_id: ObjectId(id)},{$set: {cloturer:true}}, function (err, intervention) {
         if(err)throw new Error(err);
         res.status(200)
