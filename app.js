@@ -13,8 +13,6 @@ var interventions = require('./routes/interventions');
 var points = require('./routes/points');
 var baseSP = require('./routes/baseSP');
 
-
-
 var app = express();
 
 
