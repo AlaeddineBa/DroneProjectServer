@@ -20,9 +20,9 @@ router.post('/', function(req, res, next) {
 router.get('/:id/intervention', function(req, res, next) {
     console.log("Drone ID ");
     var idIntervention = req.params.id;
-    console.log(id);
+    console.log(req.params.id);
 
-    drones.findOne({idIntervention: ObjectId(idIntervention)},function (err, docs) {
+    drones.findOne({idIntervention: idIntervention},function (err, docs) {
         if(err)throw new Error(err);
         if(!docs) {
             res.status(404)        // HTTP status 404: NotFound
