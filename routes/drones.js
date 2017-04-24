@@ -4,6 +4,9 @@ var router = express.Router();
 var db = require('./../mongo/connectMongo');
 var drones = db.collection('drones');
 
+var ObjectId = require('mongojs').ObjectId;
+var ObjectIdG = require('mongodb').ObjectID;
+
 router.post('/', function(req, res, next) {
 
     drones.save(req.body, function (err) {
