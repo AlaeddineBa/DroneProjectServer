@@ -13,4 +13,23 @@ router.post('/', function(req, res, next) {
     });
 
 });
+
+router.get('/:id/intervention', function(req, res, next) {
+    console.log("Drone ID ");
+    var idIntervention = req.params.id;
+    console.log(id);
+
+    drones.findOne({idIntervention: ObjectId(idIntervention)},function (err, docs) {
+        if(err)throw new Error(err);
+        if(!docs) {
+            res.status(404)        // HTTP status 404: NotFound
+                .send('Not found');
+        }else {
+            res.status(200)
+                .send(docs);
+        }
+    });
+});
+
+
 module.exports = router;
