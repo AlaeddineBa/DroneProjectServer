@@ -33,6 +33,11 @@ io.sockets.on('connection', function (socket) {
     console.log('AUn client me parle ! Il me dit : ' + message);
     socket.broadcast.emit('interventions', message);
   });
+  //Quand le serveur recoit un signal de type position
+  socket.on('position',function (message) {
+      console.log('Position updated to '+message.position);
+      socket.broadcast.emit('position',message);
+  });
 });
 
 
