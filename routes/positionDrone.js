@@ -45,7 +45,7 @@ router.get('/:id/intervention', function(req, res, next) {
                 .send('Not found');
         }else {
             res.status(200)
-                .send(docs);
+                .send(docs[0]);
         }
     });
 });
