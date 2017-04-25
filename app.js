@@ -5,7 +5,7 @@ var bodyParser = require('body-parser');
 require('./sync/socket');
 require('./mongo/connectMongo');
 
-var position = require('./routes/positionDrone');
+var positionDrone = require('./routes/positionDrone');
 var users = require('./routes/users');
 var test = require('./routes/test');
 var drones = require('./routes/drones');
@@ -20,7 +20,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 
-app.use('/position', position);
+app.use('/positiondrone', positionDrone);
 app.use('/users', users);
 app.use('/test', test);
 app.use('/drones', drones);
