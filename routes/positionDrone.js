@@ -32,9 +32,13 @@ router.get('/', function(req, res, next) {
 router.get('/:id/intervention', function(req, res, next) {
     console.log("Drone IDINTERVENTION ");
     var idIntervention = req.params.id;
-    console.log(req.params.id);
+    positiondrone.find({idIntervention: idIntervention}, [],{
 
-    positiondrone.findOne({idIntervention: idIntervention},function (err, docs) {
+        sort:{
+            dated: -1
+        },
+        limit:1
+    },function (err, docs) {
         if(err)throw new Error(err);
         if(!docs) {
             res.status(404)        // HTTP status 404: NotFound
