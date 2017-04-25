@@ -36,7 +36,7 @@ io.sockets.on('connection', function (socket) {
   //Quand le serveur recoit un signal de type position
   socket.on('position',function (message) {
       console.log('Position updated to '+message.position);
-      socket.broadcast.emit('position',message);
+      socket.broadcast.emit('positionUpdate',message);
   });
 });
 

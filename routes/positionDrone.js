@@ -8,7 +8,7 @@ var socketPosition = require('socket.io-client')('http://localhost:8080');
 socketPosition.on('connect', function(){});
 socketPosition.on('event', function(data){});
 socketPosition.on('disconnect', function(){});
-socketPosition.on('position',function (data) {
+socketPosition.on('positionUpdate',function (data) {
     console.log('nouvelle position',data);
 });
 
