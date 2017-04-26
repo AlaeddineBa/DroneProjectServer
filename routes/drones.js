@@ -9,10 +9,10 @@ var ObjectIdG = require('mongodb').ObjectID;
 
 router.post('/', function(req, res, next) {
 
-    drones.save(req.body, function (err) {
+    drones.save(req.body, function (err,updatedDrone) {
         if(err)throw new Error(err);
         res.status(200)
-            .send('SAVE DRONE ');
+            .send(updatedDrone);
     });
 
 });

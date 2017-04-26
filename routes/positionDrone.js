@@ -12,8 +12,12 @@ socketPosition.on('positionUpdate',function (data) {
     console.log('nouvelle position',data);
 });
 
-//Recevoir Latitude et Longitude dans le body de la requeque POST
+//mets à jours la position du drone
 router.post('/', function(req, res, next) {
+    var idIntervention = req.body.idIntervention;
+    positiondrone.remove({idIntervention: idIntervention},function (err) {
+    if(err)return Erro(err);
+    });
     positiondrone.save(req.body,function (err,updatedPosition) {
         if(err)throw new Error(err);
         res.status(200)
