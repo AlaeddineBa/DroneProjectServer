@@ -5,11 +5,8 @@ var db = require('./../mongo/connectMongo');
 var positiondrone = db.collection('positiondrone');
 var positionDroneValue;
 var socketPosition = require('socket.io-client')('http://localhost:8080');
-socketPosition.on('connect', function(){});
-socketPosition.on('event', function(data){});
-socketPosition.on('disconnect', function(){});
 socketPosition.on('positionUpdate',function (data) {
-    console.log('nouvelle position',data);
+    console.log('new  position',data);
 });
 
 //mets à jours la position du drone
