@@ -9,16 +9,16 @@ var ObjectIdG = require('mongodb').ObjectID;
 
 router.post('/', function(req, res, next) {
     console.log(req.body);
-    if(!req.body._id) {
+    if(!req.body.idIntervention) {
         drones.save(req.body, function (err, updatedDrone) {
             if (err)throw new Error(err);
             res.status(200)
                 .send(updatedDrone);
         });
     }else{
-        var id = req.body._id;
-        req.body._id = ObjectId(id);
-        drones.update({_id: req.body._id},req.body, function (err, drone) {
+        var id = req.body.idIntervention;
+        req.body.idIntervention = ObjectId(id);
+        drones.update({idIntervention: req.body.idIntervention},req.body, function (err, drone) {
             if(err)throw new Error(err);
             res.status(200)
                 .send('UPDATE');
