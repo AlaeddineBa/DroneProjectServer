@@ -11,15 +11,14 @@ router.post('/', function(req, res, next) {
     console.log(req.body);
     if(!req.body.idIntervention) {
 
-        drones.save(req.body, function (err, updatedDrone) {
+        drones.save(req.body, function (err, drone) {
             if (err)throw new Error(err);
             res.status(200)
-                .send(updatedDrone);
+                .send(drone);
         });
     }else{
         drones.update({idIntervention: req.body.idIntervention},req.body, function (err, drone) {
             if(err)throw new Error(err);
-            console.log(drone);
             res.status(200)
                 .send('UPDATE');
         });
