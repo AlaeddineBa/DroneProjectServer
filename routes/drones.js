@@ -8,6 +8,7 @@ var ObjectId = require('mongojs').ObjectId;
 var ObjectIdG = require('mongodb').ObjectID;
 
 router.post('/', function(req, res, next) {
+    console.log(req.body);
     if(!req.body._id) {
         drones.save(req.body, function (err, updatedDrone) {
             if (err)throw new Error(err);
