@@ -2,7 +2,7 @@ var express = require('express');
 var path = require('path');
 var bodyParser = require('body-parser');
 
-require('./sync/socket');
+
 require('./mongo/connectMongo');
 
 var positionDrone = require('./routes/positionDrone');
