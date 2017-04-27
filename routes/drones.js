@@ -8,12 +8,21 @@ var ObjectId = require('mongojs').ObjectId;
 var ObjectIdG = require('mongodb').ObjectID;
 
 router.post('/', function(req, res, next) {
-
-    drones.save(req.body, function (err,updatedDrone) {
-        if(err)throw new Error(err);
-        res.status(200)
-            .send(updatedDrone);
-    });
+    if(!req.body._id) {
+        drones.save(req.body, function (err, updatedDrone) {
+            if (err)throw new Error(err);
+            res.status(200)
+                .send(updatedDrone);
+        });
+    }else{
+        var id = req.body._id;
+        req.body._id = ObjectId(id);
+        drones.update({_id: req.body._id},req.body, function (err, drone) {
+            if(err)throw new Error(err);
+            res.status(200)
+                .send('UPDATE');
+        });
+    }
 
 });
 
