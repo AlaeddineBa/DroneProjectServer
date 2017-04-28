@@ -25,7 +25,7 @@ router.post('/', function(req, res, next) {
             if(err)throw new Error(err);
             socket.emit('message', intervention._id);
             res.status(200)
-                .send('SAVE');
+                .send(intervention._id);
         });
     }else{
         console.log(req.body);
@@ -35,7 +35,7 @@ router.post('/', function(req, res, next) {
             if(err)throw new Error(err);
             socket.emit('message', id);
             res.status(200)
-                .send('UPDATE');
+                .send(intervention._id);
         });
     }
 
