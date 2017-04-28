@@ -44,4 +44,21 @@ router.get('/:id/photo', function(req, res, next) {
         }
     });
 });
+
+
+router.get('/:la/:lo/photos', function(req, res, next) {
+    var la = req.params.la;
+    var lo = req.params.lo;
+    photosdrone.find({positionPTS: { "$in" : [parseFloat(la), parseFloat(lo)]}},function (err, docs) {
+        if(err)throw new Error(err);
+        if(!docs) {
+            res.status(404)        // HTTP status 404: NotFound
+                .send('Not found');
+        }else {
+            res.status(200)
+                .send(docs);
+        }
+    });
+});
+
 module.exports = router;
