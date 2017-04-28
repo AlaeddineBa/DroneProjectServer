@@ -8,7 +8,8 @@ var ObjectId = require('mongojs').ObjectId;
 var ObjectIdG = require('mongodb').ObjectID;
 
 router.post('/', function(req, res, next) {
-    console.log("AJOUT DRONE"+ req.body);
+    console.log("AJOUT DRONE ");
+    console.log(req.body);
     drones.remove({idIntervention: req.body.idIntervention},function (err) {
         if(err)return Error(err);
     });
