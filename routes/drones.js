@@ -8,21 +8,15 @@ var ObjectId = require('mongojs').ObjectId;
 var ObjectIdG = require('mongodb').ObjectID;
 
 router.post('/', function(req, res, next) {
-    console.log(req.body);
-    if(!req.body.idIntervention) {
-
-        drones.save(req.body, function (err, drone) {
-            if (err)throw new Error(err);
-            res.status(200)
-                .send(drone);
-        });
-    }else{
-        drones.update({idIntervention: req.body.idIntervention},req.body, function (err, drone) {
-            if(err)throw new Error(err);
-            res.status(200)
-                .send('UPDATE');
-        });
-    }
+    console.log("AJOUT DRONE"+ req.body);
+    drones.remove({idIntervention: req.body.idIntervention},function (err) {
+        if(err)return Error(err);
+    });
+    drones.save(req.body, function (err, drone) {
+        if (err)throw new Error(err);
+        res.status(200)
+            .send(drone);
+    });
 
 });
 
