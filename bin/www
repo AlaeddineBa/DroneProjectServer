@@ -38,11 +38,14 @@ io.sockets.on('connection', function (socket) {
       console.log('Position updated to '+message.position+"for intervention "+message.idIntervention);
       socket.broadcast.emit('positionUpdate',message.idIntervention);
   });
-    socket.on('photoUpdate',function (photo) {
+  socket.on('photoUpdate',function (photo) {
         console.log('new photo to '+ photo._id);
         socket.broadcast.emit('newPhoto',photo);
     });
-
+  socket.on('dronegit',function (drone) {
+        console.log('new drone '+ drone._id);
+        socket.broadcast.emit('droneUpdate',drone.idIntervention);
+    });
 
 });
 

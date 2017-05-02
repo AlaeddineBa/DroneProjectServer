@@ -6,17 +6,20 @@ var drones = db.collection('drones');
 
 var ObjectId = require('mongojs').ObjectId;
 var ObjectIdG = require('mongodb').ObjectID;
+var socketdrone = require('socket.io-client')('http://localhost:8080');
+socketdrone.on('droneUpdate',function (data) {
+    console.log('new  position',data);
+});
 
 router.post('/', function(req, res, next) {
-    console.log("AJOUT DRONE ");
-    console.log(req.body);
     drones.remove({idIntervention: req.body.idIntervention},function (err) {
         if(err)return Error(err);
     });
     drones.save(req.body, function (err, drone) {
         if (err)throw new Error(err);
         res.status(200)
-            .send(drone);
+            .send(drone.idIntervention);
+        socketdrone.emit('drone',drone);
     });
 
 });
