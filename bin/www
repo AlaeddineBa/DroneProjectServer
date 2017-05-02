@@ -42,7 +42,7 @@ io.sockets.on('connection', function (socket) {
         console.log('new photo to '+ photo._id);
         socket.broadcast.emit('newPhoto',photo);
     });
-  socket.on('dronegit',function (drone) {
+  socket.on('drone',function (drone) {
         console.log('new drone '+ drone._id);
         socket.broadcast.emit('droneUpdate',drone.idIntervention);
     });
