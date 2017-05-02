@@ -50,6 +50,7 @@ router.get('/:la/:lo/:id/photos', function(req, res, next) {
     var la = req.params.la;
     var lo = req.params.lo;
     var idIntervention = req.params.id;
+    console.log(req.params);
     photosdrone.find({idIntervention: idIntervention, positionPTS: { "$in" : [parseFloat(la), parseFloat(lo)]}},function (err, docs) {
         if(err)throw new Error(err);
         if(!docs) {
