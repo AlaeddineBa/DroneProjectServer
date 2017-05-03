@@ -39,8 +39,8 @@ io.sockets.on('connection', function (socket) {
       socket.broadcast.emit('positionUpdate',message.idIntervention);
   });
   socket.on('photoUpdate',function (photo) {
-        console.log('new photo to '+ photo._id);
-        socket.broadcast.emit('newPhoto',photo);
+        console.log('new photo to '+ photo.idIntervention);
+        socket.broadcast.emit('newPhoto',photo.idIntervention);
     });
   socket.on('drone',function (drone) {
         console.log('new drone '+ drone._id);
